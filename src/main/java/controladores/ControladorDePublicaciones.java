@@ -6,6 +6,7 @@ import modelos.repositorios.RepositorioDePublicaciones;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import utils.Globals;
 
 public class ControladorDePublicaciones {
@@ -18,10 +19,18 @@ public class ControladorDePublicaciones {
         repositorio = RepositorioDePublicaciones.getInstance();
     }
     
-    public void publicar(String contenido, String tema) {
-        publicacion.setContenido(contenido);
-        publicacion.setTema(tema);
-        publicacion.Crear();
+    public boolean publicar(String contenido, String tema) {
+        try {
+            publicacion.setContenido(contenido);
+            publicacion.setTema(tema);
+            publicacion.Crear();
+            
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Ocurrio un Error",1);
+        } 
+        
+        return false;
     }
     
     public void agregarEtiqueta(String etiqueta) {

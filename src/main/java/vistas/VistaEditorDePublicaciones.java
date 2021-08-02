@@ -121,7 +121,7 @@ public class VistaEditorDePublicaciones extends javax.swing.JFrame {
         txaPrincipal.setColumns(20);
         txaPrincipal.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         txaPrincipal.setRows(5);
-        txaPrincipal.setBorder(null);
+        txaPrincipal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jScrollPane1.setViewportView(txaPrincipal);
 
         btnAgregarImagen.setText("Imagen");
@@ -203,9 +203,9 @@ public class VistaEditorDePublicaciones extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addComponent(btnAgregarImagen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEtiqueta)
-                    .addComponent(edtEtiqueta, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(edtEtiqueta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEtiqueta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTema)
@@ -233,11 +233,10 @@ public class VistaEditorDePublicaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEtiquetaActionPerformed
 
     private void btnPublicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPublicarActionPerformed
-        controlador.publicar(txaPrincipal.getText(), (String)cbxTemas.getSelectedItem() );
-        
-        nuevaPublicacionAction.execute();
-        
-        dispose();
+        if (controlador.publicar(txaPrincipal.getText(), (String)cbxTemas.getSelectedItem())) {
+            nuevaPublicacionAction.execute();        
+            dispose();
+        } 
     }//GEN-LAST:event_btnPublicarActionPerformed
 
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed

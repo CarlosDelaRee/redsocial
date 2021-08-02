@@ -63,7 +63,7 @@ public class VistaSuscripcionTemas extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         btnSuscribirse = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblAutor.setBackground(new java.awt.Color(255, 255, 255));
         lblAutor.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N

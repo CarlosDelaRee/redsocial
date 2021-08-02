@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import modelos.Publicacion;
-import modelos.Usuario;
 
 import utils.ActionCallback;
 import vistas.controles.NuevaPublicacionPlaceHolder;

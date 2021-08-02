@@ -117,12 +117,16 @@ public class Publicacion {
     public void setContenido(String value) {
         if (!value.isBlank()) {
             this.contenido = value;
+        } else {
+            throw new IllegalArgumentException("El contenido no puede estar vacio");
         }
     }
     
     public void setTema(String value) {
         if (!value.isBlank()) {
             this.tema = value;
+        } else {
+            throw new IllegalArgumentException("Debes seleccionar un tema");
         }
     }
     
