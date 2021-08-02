@@ -6,8 +6,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
+import utils.ActionCallback;
 
 public class VistaSeguirTags extends javax.swing.JFrame {
+    ActionCallback changeAction;
     
     ControladorDeTemasYEtiquetas controlador;
     ArrayList<String> tagsConSuscripcion;
@@ -51,9 +53,11 @@ public class VistaSeguirTags extends javax.swing.JFrame {
                     if (e.getStateChange() == ItemEvent.SELECTED) {
                         controlador.suscribirseATag(((JCheckBox)e.getSource()).getText());
                         obtenerSuscripciones();
+                        changeAction.execute();
                     } else {
                         controlador.desuscribirseDeTag(((JCheckBox)e.getSource()).getText());
                         obtenerSuscripciones();
+                        changeAction.execute();
                     }
                 });
                 
@@ -63,6 +67,10 @@ public class VistaSeguirTags extends javax.swing.JFrame {
             pnlTags.revalidate();
             pnlTags.repaint();
         }
+    }
+    
+    public void onChange(ActionCallback callback) {
+        changeAction = callback;
     }
 
     @SuppressWarnings("unchecked")

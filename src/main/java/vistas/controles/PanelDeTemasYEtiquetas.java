@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import utils.ActionCallback;
 import vistas.VistaEditorDePublicaciones;
 import vistas.VistaSeguirTags;
 import vistas.VistaSuscripcionTemas;
@@ -19,6 +20,7 @@ import vistas.VistaSuscripcionTemas;
 public class PanelDeTemasYEtiquetas extends javax.swing.JPanel {
 
     ArrayList<JCheckBox> temas;
+    ActionCallback changeAction;
     
     public PanelDeTemasYEtiquetas() {
         initComponents();
@@ -54,6 +56,10 @@ public class PanelDeTemasYEtiquetas extends javax.swing.JPanel {
         setSize(new java.awt.Dimension(100, 300));
         setBackground(Color.WHITE);
         setVisible(true);
+    }
+    
+    public void onChange(ActionCallback callback) {
+        changeAction = callback;
     }
 
     @SuppressWarnings("unchecked")
@@ -120,11 +126,13 @@ public class PanelDeTemasYEtiquetas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSuscripcionTemasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSuscripcionTemasMouseClicked
-        new VistaSuscripcionTemas();
+        VistaSuscripcionTemas vista = new VistaSuscripcionTemas();
+        vista.onChange(changeAction);
     }//GEN-LAST:event_btnSuscripcionTemasMouseClicked
 
     private void btnBuscarEtiquetasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEtiquetasMouseClicked
-        new VistaSeguirTags();
+        VistaSeguirTags vista = new VistaSeguirTags();
+        vista.onChange(changeAction);
     }//GEN-LAST:event_btnBuscarEtiquetasMouseClicked
 
 

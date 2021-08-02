@@ -4,10 +4,12 @@ import controladores.ControladorDeTemasYEtiquetas;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
+import utils.ActionCallback;
 import utils.Globals;
 
 public class VistaSuscripcionTemas extends javax.swing.JFrame {
 
+    ActionCallback changeAction;
     ArrayList<JCheckBox> temas;
     ControladorDeTemasYEtiquetas controlador;
     
@@ -51,6 +53,10 @@ public class VistaSuscripcionTemas extends javax.swing.JFrame {
                 }
             }
         }
+    }
+    
+    public void onChange(ActionCallback callback) {
+        changeAction = callback;
     }
 
     @SuppressWarnings("unchecked")
@@ -137,6 +143,7 @@ public class VistaSuscripcionTemas extends javax.swing.JFrame {
         }
         
         controlador.suscribirseATemas(temasSeleccionados);
+        changeAction.execute();
         
         dispose();
     }//GEN-LAST:event_btnSuscribirseMouseClicked

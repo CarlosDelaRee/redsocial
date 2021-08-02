@@ -71,7 +71,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         constraints.weighty = 1;
         constraints.fill = GridBagConstraints.BOTH;
         
-        PanelDeTemasYEtiquetas panelLateralDerecho = new PanelDeTemasYEtiquetas();    
+        PanelDeTemasYEtiquetas panelLateralDerecho = new PanelDeTemasYEtiquetas();   
+        
+        panelLateralDerecho.onChange(() -> { initPanelUsuario();});  
+        
         pnlEtiquetas.add(panelLateralDerecho);
         
         add(pnlEtiquetas, constraints);
@@ -79,6 +82,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     private void initPanelUsuario() {
         GridBagConstraints constraints = new GridBagConstraints(); 
+        pnlUsuario.removeAll();
         
         pnlUsuario.setLayout(new BoxLayout(pnlUsuario, BoxLayout.Y_AXIS));
         pnlUsuario.setBackground(Color.BLUE); 
@@ -103,6 +107,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pnlUsuario.add(panelUsuario); 
         
         add(pnlUsuario, constraints);
+        
+        pnlUsuario.revalidate();
+        pnlUsuario.repaint();
     }
     
     private void initPanelPublicaciones() {
